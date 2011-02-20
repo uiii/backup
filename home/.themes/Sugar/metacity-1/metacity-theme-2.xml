@@ -1,0 +1,525 @@
+<?xml version="1.0"?>
+<metacity_theme>
+<info>
+   <name>Sugar2</name>
+   <author>SamsamTS</author>
+   <copyright>SamsamTS, 2010</copyright>
+   <date>September, 2010</date>
+   <description>Sugar metacity-2 theme</description>
+</info>
+
+<constant name="FrameBorder" value="3"/>
+<constant name="TitleBorder" value="3"/>
+<constant name="TitleEdge" value="6"/>
+
+<frame_geometry name="normal_geometry"
+   rounded_top_left="2" rounded_top_right="2" rounded_bottom_left="1" rounded_bottom_right="1">
+   <distance name="left_width" value="FrameBorder"/>
+   <distance name="right_width" value="FrameBorder"/>
+   <distance name="bottom_height" value="FrameBorder"/>
+   <distance name="left_titlebar_edge" value="TitleEdge"/>
+   <distance name="right_titlebar_edge" value="TitleEdge"/>
+   <distance name="button_width" value="22"/>
+   <distance name="button_height" value="22"/>
+   <distance name="title_vertical_pad" value="FrameBorder"/>
+   <border name="title_border" left="0" right="0" top="0" bottom="TitleBorder"/>
+   <border name="button_border" left="0" right="0" top="0" bottom="2"/>
+</frame_geometry>
+
+<frame_geometry name="maximized_geometry"
+   rounded_top_left="false" rounded_top_right="false" rounded_bottom_left="false" rounded_bottom_right="false">
+   <distance name="left_width" value="0"/>
+   <distance name="right_width" value="0"/>
+   <distance name="bottom_height" value="0"/>
+   <distance name="left_titlebar_edge" value="FrameBorder"/>
+   <distance name="right_titlebar_edge" value="FrameBorder"/>
+   <distance name="button_width" value="22"/>
+   <distance name="button_height" value="22"/>
+   <distance name="title_vertical_pad" value="FrameBorder"/>
+   <border name="title_border" left="0" right="0" top="0" bottom="TitleBorder"/>
+   <border name="button_border" left="0" right="0" top="0" bottom="2"/>
+</frame_geometry>
+
+<!-- BORDER -->
+<draw_ops name="normal_border">
+
+   <rectangle color="gtk:fg[NORMAL]" x="0" y="0" width="width" height="height" filled="true"/>
+
+   <!-- Highlight -->
+
+   <gradient type="vertical" x="1" y="1" width="width-2" height="top_height*2 -1">
+      <color value="blend/gtk:fg[NORMAL]/gtk:bg[NORMAL]/0.3"/>
+      <color value="gtk:fg[NORMAL]"/>
+   </gradient>
+
+   <gradient type="horizontal" x="1" y="1" width="width-2" height="1">
+      <color value="blend/gtk:fg[NORMAL]/gtk:bg[NORMAL]/0.3"/>
+      <color value="blend/gtk:fg[NORMAL]/gtk:bg[NORMAL]/0.25"/>
+      <color value="blend/gtk:fg[NORMAL]/gtk:bg[NORMAL]/0.3"/>
+   </gradient>
+
+   <rectangle color="gtk:fg[NORMAL]" x="2" y="2" width="width-4" height="height-4" filled="true"/>
+   <rectangle color="gtk:fg[NORMAL]" x="0" y="0" width="3" height="3" filled="true"/>
+   <rectangle color="gtk:fg[NORMAL]" x="width-3" y="0" width="3" height="3" filled="true"/>
+
+   <!-- Title -->
+   <gradient type="vertical" x="2" y="2" width="width-4" height="top_height -2">
+      <color value="blend/gtk:fg[NORMAL]/gtk:bg[NORMAL]/0.125"/>
+      <color value="blend/gtk:fg[NORMAL]/gtk:bg[NORMAL]/0.05"/>
+      <color value="gtk:fg[NORMAL]"/>
+   </gradient>
+
+   <!-- Corner top left -->
+   <gradient type="horizontal" x="0" y="2" width="3" height="1">
+      <color value="gtk:fg[NORMAL]"/>
+      <color value="blend/gtk:fg[NORMAL]/gtk:bg[NORMAL]/0.5"/>
+   </gradient>
+
+   <gradient type="vertical" x="2" y="0" width="1" height="3">
+      <color value="gtk:fg[NORMAL]"/>
+      <color value="blend/gtk:fg[NORMAL]/gtk:bg[NORMAL]/0.5"/>
+   </gradient>
+
+   <!-- Corner top right -->
+   <gradient type="horizontal" x="width-3" y="2" width="2" height="1">
+      <color value="blend/gtk:fg[NORMAL]/gtk:bg[NORMAL]/0.5"/>
+      <color value="gtk:fg[NORMAL]"/>
+   </gradient>
+
+   <gradient type="vertical" x="width-3" y="0" width="1" height="3">
+      <color value="gtk:fg[NORMAL]"/>
+      <color value="blend/gtk:fg[NORMAL]/gtk:bg[NORMAL]/0.5"/>
+   </gradient>
+
+   <!-- Button inset right -->
+   <tint color="gtk:bg[NORMAL]" alpha="0.15" x="width-FrameBorder-TitleBorder"  y="2"  width="1" height="13"/>
+   <tint color="gtk:bg[NORMAL]" alpha="0.15" x="width-FrameBorder-TitleBorder-1"  y="15"  width="1" height="1"/>
+
+</draw_ops>
+
+<draw_ops name="maximized_border">
+
+   <rectangle color="gtk:fg[NORMAL]" x="0" y="0" width="width" height="height" filled="true"/>
+
+   <!-- Highlight -->
+   <gradient type="horizontal" x="1" y="1" width="width-2" height="1">
+      <color value="blend/gtk:fg[NORMAL]/gtk:bg[NORMAL]/0.3"/>
+      <color value="blend/gtk:fg[NORMAL]/gtk:bg[NORMAL]/0.25"/>
+      <color value="blend/gtk:fg[NORMAL]/gtk:bg[NORMAL]/0.3"/>
+   </gradient>
+
+   <!-- Title -->
+   <gradient type="vertical" x="2" y="2" width="width-4" height="top_height -2">
+      <color value="blend/gtk:fg[NORMAL]/gtk:bg[NORMAL]/0.125"/>
+      <color value="blend/gtk:fg[NORMAL]/gtk:bg[NORMAL]/0.05"/>
+      <color value="gtk:fg[NORMAL]"/>
+   </gradient>
+
+   <!-- Button inset right -->
+   <tint color="gtk:bg[NORMAL]" alpha="0.15" x="width-TitleBorder"  y="2"  width="1" height="13"/>
+   <tint color="gtk:bg[NORMAL]" alpha="0.15" x="width-TitleBorder-1"  y="15"  width="1" height="1"/>
+
+</draw_ops>
+
+<!-- TITLE -->
+
+<draw_ops name="title_normal">
+   <title color="blend/gtk:bg[NORMAL]/gtk:fg[NORMAL]/0.25" x="0" y="(top_height - title_height) / 2 + 1"/>
+   <rectangle color="gtk:fg[NORMAL]" x="width-1" y="0" width="1" height="16" filled="true"/>
+   <tint color="gtk:bg[NORMAL]" alpha="0.15" x="width-2"  y="2"  width="1" height="13"/>
+   <tint color="gtk:bg[NORMAL]" alpha="0.2" x="width-1"  y="15"  width="1" height="1"/>
+</draw_ops>
+
+<draw_ops name="title_unfocused">
+   <title color="blend/gtk:bg[NORMAL]/gtk:fg[NORMAL]/0.65" x="0" y="(top_height - title_height) / 2 + 1"/>
+   <rectangle color="gtk:fg[NORMAL]" x="width-1" y="0" width="1" height="16" filled="true"/>
+   <tint color="gtk:bg[NORMAL]" alpha="0.15" x="width-2"  y="2"  width="1" height="13"/>
+   <tint color="gtk:bg[NORMAL]" alpha="0.2" x="width-1"  y="15"  width="1" height="1"/>
+</draw_ops>
+
+
+<!-- BUTTONS -->
+
+  <!-- close -->
+<draw_ops name="close_button">
+
+   <rectangle color="gtk:fg[NORMAL]" x="0" y="0" width="width" height="15" filled="true"/>
+   <rectangle color="gtk:fg[NORMAL]" x="0" y="0" width="width-1" height="16" filled="true"/>
+   <rectangle color="blend/gtk:fg[NORMAL]/gtk:bg[NORMAL]/0.15" x="0" y="16" width="width-1" height="1" filled="true"/>
+
+   <gradient type="vertical" x="0" y="1" width="width-1" height="14">
+      <color value="blend/gtk:fg[NORMAL]/gtk:bg[NORMAL]/0.2"/>
+      <color value="blend/gtk:fg[NORMAL]/gtk:bg[NORMAL]/0.15"/>
+   </gradient>
+
+   <gradient type="vertical" x="1" y="2" width="width-3" height="12">
+      <color value="blend/gtk:fg[NORMAL]/gtk:bg[NORMAL]/0.125"/>
+      <color value="blend/gtk:fg[NORMAL]/gtk:bg[NORMAL]/0.075"/>
+   </gradient>
+
+
+   <line color="blend/gtk:bg[NORMAL]/gtk:fg[NORMAL]/0.75" x1="8" y1="5" x2="13" y2="10"/>
+   <line color="blend/gtk:bg[NORMAL]/gtk:fg[NORMAL]/0.65" x1="7" y1="5" x2="13" y2="11"/>
+   <line color="blend/gtk:bg[NORMAL]/gtk:fg[NORMAL]/0.75" x1="7" y1="6" x2="12" y2="11"/>
+
+   <line color="blend/gtk:bg[NORMAL]/gtk:fg[NORMAL]/0.75" x1="7" y1="10" x2="12" y2="5"/>
+   <line color="blend/gtk:bg[NORMAL]/gtk:fg[NORMAL]/0.65" x1="7" y1="11" x2="13" y2="5"/>
+   <line color="blend/gtk:bg[NORMAL]/gtk:fg[NORMAL]/0.75" x1="8" y1="11" x2="13" y2="6"/>
+
+
+   <line color="blend/gtk:bg[NORMAL]/gtk:fg[NORMAL]/0.5" x1="8" y1="6" x2="12" y2="10"/>
+   <line color="blend/gtk:bg[NORMAL]/gtk:fg[NORMAL]/0.5" x1="8" y1="10" x2="12" y2="6"/>
+
+</draw_ops>
+<draw_ops name="close_button_prelight">
+
+   <rectangle color="gtk:fg[NORMAL]" x="0" y="0" width="width" height="15" filled="true"/>
+   <rectangle color="gtk:fg[NORMAL]" x="0" y="0" width="width-1" height="16" filled="true"/>
+   <rectangle color="blend/gtk:fg[NORMAL]/gtk:bg[NORMAL]/0.15" x="0" y="16" width="width-1" height="1" filled="true"/>
+
+   <gradient type="vertical" x="0" y="1" width="width-1" height="14">
+      <color value="blend/gtk:fg[NORMAL]/#FF9977/0.5"/>
+      <color value="blend/gtk:fg[NORMAL]/#FF9977/0.4"/>
+   </gradient>
+
+   <gradient type="vertical" x="1" y="2" width="width-3" height="12">
+      <color value="blend/gtk:fg[NORMAL]/#FF9977/0.4"/>
+      <color value="blend/gtk:fg[NORMAL]/#FF9977/0.3"/>
+   </gradient>
+
+   <line color="blend/gtk:fg[NORMAL]/#FF9977/0.5" x1="8" y1="5" x2="13" y2="10"/>
+   <line color="blend/gtk:fg[NORMAL]/#FF9977/0.65" x1="7" y1="5" x2="13" y2="11"/>
+   <line color="blend/gtk:fg[NORMAL]/#FF9977/0.5" x1="7" y1="6" x2="12" y2="11"/>
+
+   <line color="blend/gtk:fg[NORMAL]/#FF9977/0.5" x1="7" y1="10" x2="12" y2="5"/>
+   <line color="blend/gtk:fg[NORMAL]/#FF9977/0.65" x1="7" y1="11" x2="13" y2="5"/>
+   <line color="blend/gtk:fg[NORMAL]/#FF9977/0.5" x1="8" y1="11" x2="13" y2="6"/>
+
+
+   <line color="blend/gtk:bg[NORMAL]/gtk:fg[NORMAL]/0.25" x1="8" y1="6" x2="12" y2="10"/>
+   <line color="blend/gtk:bg[NORMAL]/gtk:fg[NORMAL]/0.25" x1="8" y1="10" x2="12" y2="6"/>
+
+</draw_ops>
+<draw_ops name="close_button_pressed">
+
+   <rectangle color="blend/gtk:fg[NORMAL]/gtk:bg[NORMAL]/0.1" x="0" y="0" width="width" height="15" filled="true"/>
+   <rectangle color="blend/gtk:fg[NORMAL]/gtk:bg[NORMAL]/0.1" x="0" y="0" width="width-1" height="16" filled="true"/>
+   <rectangle color="blend/gtk:fg[NORMAL]/gtk:bg[NORMAL]/0.15" x="0" y="16" width="width-1" height="1" filled="true"/>
+
+   <line color="blend/gtk:bg[NORMAL]/gtk:fg[NORMAL]/0.75" x1="8" y1="6" x2="13" y2="11"/>
+   <line color="blend/gtk:bg[NORMAL]/gtk:fg[NORMAL]/0.65" x1="7" y1="6" x2="13" y2="12"/>
+   <line color="blend/gtk:bg[NORMAL]/gtk:fg[NORMAL]/0.75" x1="7" y1="7" x2="12" y2="12"/>
+
+   <line color="blend/gtk:bg[NORMAL]/gtk:fg[NORMAL]/0.75" x1="7" y1="11" x2="12" y2="6"/>
+   <line color="blend/gtk:bg[NORMAL]/gtk:fg[NORMAL]/0.65" x1="7" y1="12" x2="13" y2="6"/>
+   <line color="blend/gtk:bg[NORMAL]/gtk:fg[NORMAL]/0.75" x1="8" y1="12" x2="13" y2="7"/>
+
+
+   <line color="blend/gtk:bg[NORMAL]/gtk:fg[NORMAL]/0.5" x1="8" y1="7" x2="12" y2="11"/>
+   <line color="blend/gtk:bg[NORMAL]/gtk:fg[NORMAL]/0.5" x1="8" y1="11" x2="12" y2="7"/>
+
+</draw_ops>
+<draw_ops name="close_button_unfocused">
+
+   <rectangle color="gtk:fg[NORMAL]" x="0" y="0" width="width" height="15" filled="true"/>
+   <rectangle color="gtk:fg[NORMAL]" x="0" y="0" width="width-1" height="16" filled="true"/>
+   <rectangle color="blend/gtk:fg[NORMAL]/gtk:bg[NORMAL]/0.15" x="0" y="16" width="width-1" height="1" filled="true"/>
+
+   <gradient type="vertical" x="0" y="1" width="width-1" height="14">
+      <color value="blend/gtk:fg[NORMAL]/gtk:bg[NORMAL]/0.2"/>
+      <color value="blend/gtk:fg[NORMAL]/gtk:bg[NORMAL]/0.15"/>
+   </gradient>
+
+   <gradient type="vertical" x="1" y="2" width="width-3" height="12">
+      <color value="blend/gtk:fg[NORMAL]/gtk:bg[NORMAL]/0.125"/>
+      <color value="blend/gtk:fg[NORMAL]/gtk:bg[NORMAL]/0.075"/>
+   </gradient>
+
+   <line color="blend/gtk:bg[NORMAL]/gtk:fg[NORMAL]/0.85" x1="8" y1="5" x2="13" y2="10"/>
+   <line color="blend/gtk:bg[NORMAL]/gtk:fg[NORMAL]/0.8" x1="7" y1="5" x2="13" y2="11"/>
+   <line color="blend/gtk:bg[NORMAL]/gtk:fg[NORMAL]/0.85" x1="7" y1="6" x2="12" y2="11"/>
+
+   <line color="blend/gtk:bg[NORMAL]/gtk:fg[NORMAL]/0.85" x1="7" y1="10" x2="12" y2="5"/>
+   <line color="blend/gtk:bg[NORMAL]/gtk:fg[NORMAL]/0.8" x1="7" y1="11" x2="13" y2="5"/>
+   <line color="blend/gtk:bg[NORMAL]/gtk:fg[NORMAL]/0.85" x1="8" y1="11" x2="13" y2="6"/>
+
+
+   <line color="blend/gtk:bg[NORMAL]/gtk:fg[NORMAL]/0.75" x1="8" y1="6" x2="12" y2="10"/>
+   <line color="blend/gtk:bg[NORMAL]/gtk:fg[NORMAL]/0.75" x1="8" y1="10" x2="12" y2="6"/>
+
+</draw_ops>
+  <!-- maximize -->
+<draw_ops name="maximize_button">
+
+   <rectangle color="gtk:fg[NORMAL]" x="0" y="0" width="width" height="16" filled="true"/>
+   <rectangle color="blend/gtk:fg[NORMAL]/gtk:bg[NORMAL]/0.15" x="0" y="16" width="width" height="1" filled="true"/>
+
+   <gradient type="vertical" x="0" y="1" width="width-1" height="14">
+      <color value="blend/gtk:fg[NORMAL]/gtk:bg[NORMAL]/0.2"/>
+      <color value="blend/gtk:fg[NORMAL]/gtk:bg[NORMAL]/0.15"/>
+   </gradient>
+
+   <gradient type="vertical" x="1" y="2" width="width-3" height="12">
+      <color value="blend/gtk:fg[NORMAL]/gtk:bg[NORMAL]/0.125"/>
+      <color value="blend/gtk:fg[NORMAL]/gtk:bg[NORMAL]/0.075"/>
+   </gradient>
+
+   <rectangle color="blend/gtk:bg[NORMAL]/gtk:fg[NORMAL]/0.5" x="7" y="5" width="7" height="2" filled="true"/>
+   <rectangle color="blend/gtk:bg[NORMAL]/gtk:fg[NORMAL]/0.5" x="6" y="5" width="8" height="6" filled="false"/>
+
+</draw_ops>
+<draw_ops name="maximize_button_prelight">
+
+   <rectangle color="gtk:fg[NORMAL]" x="0" y="0" width="width" height="16" filled="true"/>
+   <rectangle color="blend/gtk:fg[NORMAL]/gtk:bg[NORMAL]/0.15" x="0" y="16" width="width" height="1" filled="true"/>
+
+   <gradient type="vertical" x="0" y="1" width="width-1" height="14">
+      <color value="blend/gtk:fg[NORMAL]/gtk:bg[SELECTED]/0.5"/>
+      <color value="blend/gtk:fg[NORMAL]/gtk:bg[SELECTED]/0.4"/>
+   </gradient>
+
+   <gradient type="vertical" x="1" y="2" width="width-3" height="12">
+      <color value="blend/gtk:fg[NORMAL]/gtk:bg[SELECTED]/0.4"/>
+      <color value="blend/gtk:fg[NORMAL]/gtk:bg[SELECTED]/0.3"/>
+   </gradient>
+
+   <rectangle color="blend/gtk:bg[NORMAL]/gtk:fg[NORMAL]/0.25" x="7" y="5" width="7" height="2" filled="true"/>
+   <rectangle color="blend/gtk:bg[NORMAL]/gtk:fg[NORMAL]/0.25" x="6" y="5" width="8" height="6" filled="false"/>
+
+</draw_ops>
+<draw_ops name="maximize_button_pressed">
+
+   <rectangle color="blend/gtk:fg[NORMAL]/gtk:bg[NORMAL]/0.1" x="0" y="0" width="width" height="16" filled="true"/>
+   <rectangle color="blend/gtk:fg[NORMAL]/gtk:bg[NORMAL]/0.15" x="0" y="16" width="width" height="1" filled="true"/>
+
+   <rectangle color="blend/gtk:bg[NORMAL]/gtk:fg[NORMAL]/0.5" x="7" y="6" width="7" height="2" filled="true"/>
+   <rectangle color="blend/gtk:bg[NORMAL]/gtk:fg[NORMAL]/0.5" x="6" y="6" width="8" height="6" filled="false"/>
+
+</draw_ops>
+<draw_ops name="maximize_button_unfocused">
+
+   <rectangle color="gtk:fg[NORMAL]" x="0" y="0" width="width" height="16" filled="true"/>
+   <rectangle color="blend/gtk:fg[NORMAL]/gtk:bg[NORMAL]/0.15" x="0" y="16" width="width" height="1" filled="true"/>
+
+   <gradient type="vertical" x="0" y="1" width="width-1" height="14">
+      <color value="blend/gtk:fg[NORMAL]/gtk:bg[NORMAL]/0.2"/>
+      <color value="blend/gtk:fg[NORMAL]/gtk:bg[NORMAL]/0.15"/>
+   </gradient>
+
+   <gradient type="vertical" x="1" y="2" width="width-3" height="12">
+      <color value="blend/gtk:fg[NORMAL]/gtk:bg[NORMAL]/0.125"/>
+      <color value="blend/gtk:fg[NORMAL]/gtk:bg[NORMAL]/0.075"/>
+   </gradient>
+
+   <rectangle color="blend/gtk:bg[NORMAL]/gtk:fg[NORMAL]/0.75" x="7" y="5" width="7" height="2" filled="true"/>
+   <rectangle color="blend/gtk:bg[NORMAL]/gtk:fg[NORMAL]/0.75" x="6" y="5" width="8" height="6" filled="false"/>
+
+</draw_ops>
+  <!-- minimize -->
+<draw_ops name="minimize_button">
+
+   <rectangle color="gtk:fg[NORMAL]" x="0" y="0" width="width" height="16" filled="true"/>
+   <rectangle color="blend/gtk:fg[NORMAL]/gtk:bg[NORMAL]/0.15" x="0" y="16" width="width" height="1" filled="true"/>
+
+   <gradient type="vertical" x="0" y="1" width="width-1" height="14">
+      <color value="blend/gtk:fg[NORMAL]/gtk:bg[NORMAL]/0.2"/>
+      <color value="blend/gtk:fg[NORMAL]/gtk:bg[NORMAL]/0.15"/>
+   </gradient>
+
+   <gradient type="vertical" x="1" y="2" width="width-3" height="12">
+      <color value="blend/gtk:fg[NORMAL]/gtk:bg[NORMAL]/0.125"/>
+      <color value="blend/gtk:fg[NORMAL]/gtk:bg[NORMAL]/0.075"/>
+   </gradient>
+
+   <rectangle color="blend/gtk:bg[NORMAL]/gtk:fg[NORMAL]/0.5" x="7" y="9" width="7" height="2" filled="true"/>
+
+</draw_ops>
+<draw_ops name="minimize_button_prelight">
+
+   <rectangle color="gtk:fg[NORMAL]" x="0" y="0" width="width" height="16" filled="true"/>
+   <rectangle color="blend/gtk:fg[NORMAL]/gtk:bg[NORMAL]/0.15" x="0" y="16" width="width" height="1" filled="true"/>
+
+   <gradient type="vertical" x="0" y="1" width="width-1" height="14">
+      <color value="blend/gtk:fg[NORMAL]/gtk:bg[SELECTED]/0.5"/>
+      <color value="blend/gtk:fg[NORMAL]/gtk:bg[SELECTED]/0.4"/>
+   </gradient>
+
+   <gradient type="vertical" x="1" y="2" width="width-3" height="12">
+      <color value="blend/gtk:fg[NORMAL]/gtk:bg[SELECTED]/0.4"/>
+      <color value="blend/gtk:fg[NORMAL]/gtk:bg[SELECTED]/0.3"/>
+   </gradient>
+
+   <rectangle color="blend/gtk:bg[NORMAL]/gtk:fg[NORMAL]/0.25" x="7" y="9" width="7" height="2" filled="true"/>
+
+</draw_ops>
+<draw_ops name="minimize_button_pressed">
+
+   <rectangle color="blend/gtk:fg[NORMAL]/gtk:bg[NORMAL]/0.1" x="0" y="0" width="width" height="16" filled="true"/>
+   <rectangle color="blend/gtk:fg[NORMAL]/gtk:bg[NORMAL]/0.15" x="0" y="16" width="width" height="1" filled="true"/>
+
+   <rectangle color="blend/gtk:bg[NORMAL]/gtk:fg[NORMAL]/0.5" x="7" y="10" width="7" height="2" filled="true"/>
+
+</draw_ops>
+<draw_ops name="minimize_button_unfocused">
+
+   <rectangle color="gtk:fg[NORMAL]" x="0" y="0" width="width" height="16" filled="true"/>
+   <rectangle color="blend/gtk:fg[NORMAL]/gtk:bg[NORMAL]/0.15" x="0" y="16" width="width" height="1" filled="true"/>
+
+   <gradient type="vertical" x="0" y="1" width="width-1" height="14">
+      <color value="blend/gtk:fg[NORMAL]/gtk:bg[NORMAL]/0.2"/>
+      <color value="blend/gtk:fg[NORMAL]/gtk:bg[NORMAL]/0.15"/>
+   </gradient>
+
+   <gradient type="vertical" x="1" y="2" width="width-3" height="12">
+      <color value="blend/gtk:fg[NORMAL]/gtk:bg[NORMAL]/0.125"/>
+      <color value="blend/gtk:fg[NORMAL]/gtk:bg[NORMAL]/0.075"/>
+   </gradient>
+
+   <rectangle color="blend/gtk:bg[NORMAL]/gtk:fg[NORMAL]/0.75" x="7" y="9" width="7" height="2" filled="true"/>
+
+</draw_ops>
+  <!-- menu -->
+<draw_ops name="menu_button">
+   <icon x="0" y="(22-mini_icon_height)/2+1" width="mini_icon_width" height="mini_icon_height" alpha="1"/> 
+</draw_ops>
+<draw_ops name="menu_button_unfocused">
+   <icon x="0" y="(22-mini_icon_height)/2+1" width="mini_icon_width" height="mini_icon_height" alpha="0.5"/> 
+</draw_ops>
+
+<!-- More buttons -->
+  <!-- shade -->
+<draw_ops name="shade_button"></draw_ops>
+<draw_ops name="shade_button_prelight"></draw_ops>
+<draw_ops name="shade_button_unfocused"></draw_ops>
+  <!-- unshade -->
+<draw_ops name="unshade_button"></draw_ops>
+<draw_ops name="unshade_button_prelight"></draw_ops>
+<draw_ops name="unshade_button_unfocused"></draw_ops>
+  <!-- above -->
+<draw_ops name="above_button"></draw_ops>
+<draw_ops name="above_button_prelight"></draw_ops>
+<draw_ops name="above_button_unfocused"></draw_ops>
+  <!-- unabove -->
+<draw_ops name="unabove_button"></draw_ops>
+<draw_ops name="unabove_button_prelight"></draw_ops>
+<draw_ops name="unabove_button_unfocused"></draw_ops>
+  <!-- stick -->
+<draw_ops name="stick_button"></draw_ops>
+<draw_ops name="stick_button_prelight"></draw_ops>
+<draw_ops name="stick_button_unfocused"></draw_ops>
+  <!-- unstick -->
+<draw_ops name="unstick_button"></draw_ops>
+<draw_ops name="unstick_button_prelight"></draw_ops>
+<draw_ops name="unstick_button_unfocused"></draw_ops>
+
+<!-- FRAME STYLE -->
+
+<frame_style name="normal_focused_style" geometry="normal_geometry">
+   <piece position="title" draw_ops="title_normal"/>
+   <piece position="entire_background" draw_ops="normal_border"/>
+   <button function="close" state="normal" draw_ops="close_button"/>
+   <button function="close" state="prelight" draw_ops="close_button_prelight"/>
+   <button function="close" state="pressed" draw_ops="close_button_pressed"/>
+   <button function="minimize" state="normal" draw_ops="minimize_button"/>
+   <button function="minimize" state="prelight" draw_ops="minimize_button_prelight"/>
+   <button function="minimize" state="pressed" draw_ops="minimize_button_pressed"/>
+   <button function="maximize" state="normal" draw_ops="maximize_button"/>
+   <button function="maximize" state="prelight" draw_ops="maximize_button_prelight"/>
+   <button function="maximize" state="pressed" draw_ops="maximize_button_pressed"/>
+   <button function="menu" state="normal" draw_ops="menu_button"/>
+   <button function="menu" state="pressed" draw_ops="menu_button"/>
+
+  <button function="shade"    state="normal" draw_ops="shade_button"/>
+  <button function="above"    state="normal" draw_ops="above_button"/>
+  <button function="stick"    state="normal" draw_ops="stick_button"/>
+  <button function="unshade"  state="normal" draw_ops="unshade_button"/>
+  <button function="unabove"  state="normal" draw_ops="unabove_button"/>
+  <button function="unstick"  state="normal" draw_ops="unstick_button"/>
+
+  <button function="shade"    state="prelight" draw_ops="shade_button_prelight"/>
+  <button function="above"    state="prelight" draw_ops="above_button_prelight"/>
+  <button function="stick"    state="prelight" draw_ops="stick_button_prelight"/>
+  <button function="unshade"  state="prelight" draw_ops="unshade_button_prelight"/>
+  <button function="unabove"  state="prelight" draw_ops="unabove_button_prelight"/>
+  <button function="unstick"  state="prelight" draw_ops="unstick_button_prelight"/>
+
+  <button function="shade"    state="pressed" draw_ops="shade_button_unfocused"/>
+  <button function="above"    state="pressed" draw_ops="above_button_unfocused"/>
+  <button function="stick"    state="pressed" draw_ops="stick_button_unfocused"/>
+  <button function="unshade"  state="pressed" draw_ops="unshade_button_unfocused"/>
+  <button function="unabove"  state="pressed" draw_ops="unabove_button_unfocused"/>
+  <button function="unstick"  state="pressed" draw_ops="unstick_button_unfocused"/>
+
+</frame_style>
+
+<frame_style name="normal_unfocused_style" geometry="normal_geometry">
+   <piece position="title" draw_ops="title_unfocused"/>
+   <piece position="entire_background" draw_ops="normal_border"/>
+   <button function="close" state="normal" draw_ops="close_button_unfocused"/>
+   <button function="close" state="prelight" draw_ops="close_button_prelight"/>
+   <button function="close" state="pressed" draw_ops="close_button"/>
+   <button function="minimize" state="normal" draw_ops="minimize_button_unfocused"/>
+   <button function="minimize" state="prelight" draw_ops="minimize_button_prelight"/>
+   <button function="minimize" state="pressed" draw_ops="minimize_button"/>
+   <button function="maximize" state="normal" draw_ops="maximize_button_unfocused"/>
+   <button function="maximize" state="prelight" draw_ops="maximize_button_prelight"/>
+   <button function="maximize" state="pressed" draw_ops="maximize_button"/>
+   <button function="menu" state="normal" draw_ops="menu_button_unfocused"/>
+   <button function="menu" state="pressed" draw_ops="menu_button"/>
+
+  <button function="shade"    state="normal" draw_ops="shade_button_unfocused"/>
+  <button function="above"    state="normal" draw_ops="above_button_unfocused"/>
+  <button function="stick"    state="normal" draw_ops="stick_button_unfocused"/>
+  <button function="unshade"  state="normal" draw_ops="unshade_button_unfocused"/>
+  <button function="unabove"  state="normal" draw_ops="unabove_button_unfocused"/>
+  <button function="unstick"  state="normal" draw_ops="unstick_button_unfocused"/>
+
+  <button function="shade"    state="prelight" draw_ops="shade_button"/>
+  <button function="above"    state="prelight" draw_ops="above_button"/>
+  <button function="stick"    state="prelight" draw_ops="stick_button"/>
+  <button function="unshade"  state="prelight" draw_ops="unshade_button"/>
+  <button function="unabove"  state="prelight" draw_ops="unabove_button"/>
+  <button function="unstick"  state="prelight" draw_ops="unstick_button"/>
+
+  <button function="shade"    state="pressed" draw_ops="shade_button"/>
+  <button function="above"    state="pressed" draw_ops="above_button"/>
+  <button function="stick"    state="pressed" draw_ops="stick_button"/>
+  <button function="unshade"  state="pressed" draw_ops="unshade_button"/>
+  <button function="unabove"  state="pressed" draw_ops="unabove_button"/>
+  <button function="unstick"  state="pressed" draw_ops="unstick_button"/>
+
+</frame_style>
+
+<frame_style name="maximized_focused_style" geometry="maximized_geometry" parent="normal_focused_style">
+   <piece position="title" draw_ops="title_normal"/>
+   <piece position="entire_background" draw_ops="maximized_border"/>
+</frame_style>
+
+<frame_style name="maximized_unfocused_style" geometry="maximized_geometry" parent="normal_unfocused_style">
+   <piece position="title" draw_ops="title_unfocused"/>
+   <piece position="entire_background" draw_ops="maximized_border"/>
+</frame_style>
+
+<!-- STYLE SET -->
+
+<frame_style_set name="normal_set">
+   <frame focus="yes" state="normal" resize="both" style="normal_focused_style"/>
+   <frame focus="no" state="normal" resize="both" style="normal_unfocused_style"/>
+   <frame focus="yes" state="maximized" style="maximized_focused_style"/>
+   <frame focus="no" state="maximized" style="maximized_unfocused_style"/>
+   <frame focus="yes" state="shaded" style="normal_focused_style"/>
+   <frame focus="no" state="shaded" style="normal_unfocused_style"/>
+   <frame focus="yes" state="maximized_and_shaded" style="maximized_focused_style"/>
+   <frame focus="no" state="maximized_and_shaded" style="maximized_unfocused_style"/>
+</frame_style_set>
+
+<!-- WINDOW -->
+
+<window type="normal" style_set="normal_set"/>
+<window type="dialog" style_set="normal_set"/>
+<window type="modal_dialog" style_set="normal_set"/>
+<window type="menu" style_set="normal_set"/>
+<window type="utility" style_set="normal_set"/>
+<window type="border" style_set="normal_set"/>
+
+</metacity_theme> 

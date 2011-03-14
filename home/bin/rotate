@@ -1,0 +1,69 @@
+#!/bin/bash
+
+#### rotate.sh - A script for tablet PCs to rotate the display.
+
+## This software is licensed under the CC-GNU GPL.
+## http://creativecommons.org/licenses/GPL/2.0/
+
+## http://wiki.archlinux.org/index.php/Tablet_PC
+## REQUIRES: linuxwacom (http://linuxwacom.sourceforge.net/)
+ 
+#### Function(s)
+function set_normal {
+xrandr -o normal
+xsetwacom set 6 Rotate none
+#xsetwacom set "cursor" Rotate 0
+xsetwacom set 7 Rotate none
+nitrogen --restore
+orientation="normal"
+}
+
+function set_right {
+xrandr -o right
+xsetwacom set 6 Rotate cw
+#xsetwacom set "cursor" Rotate 1
+xsetwacom set 7 Rotate cw
+nitrogen --restore
+orientation="right"
+}
+
+function set_left {
+xrandr -o left
+xsetwacom set 6 Rotate ccw
+#xsetwacom set "cursor" Rotate 2
+xsetwacom set 7 Rotate ccw
+nitrogen --restore
+orientation="left"
+}
+
+function set_inverted {
+xrandr -o inverted
+xsetwacom set 6 Rotate half
+#xsetwacom set "cursor" Rotate 3
+xsetwacom set 7 Rotate half
+nitrogen --restore
+orientation="inverted"
+}
+
+#### Variable(s)
+if [ $# -gt 0 ]
+then
+	case $1 in
+		"normal") set_normal ;;
+		"right") set_right ;;
+		"inverted") set_inverted ;;
+		"left") set_inverted ;;
+		*) echo "usage: rotate [ normal | right | inverted | left ]" ;;
+	esac
+else
+	orientation="$(xrandr --query --verbose | grep LVDS | awk '{print $5}')"
+
+	case $orientation in
+		"normal") set_right ;;
+		"right") set_inverted ;;
+		"inverted") set_left ;;
+		"left") set_normal ;;
+	esac
+fi
+
+#### EOF

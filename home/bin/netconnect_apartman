@@ -1,0 +1,7 @@
+#!/bin/bash
+
+sudo dhcpcd eth1 -x
+
+sudo wpa_supplicant -Dwext -ieth1 -c/home/uiii/.netconnect/wpa_apartman.conf -B
+
+sudo dhcpcd -t 60 eth1

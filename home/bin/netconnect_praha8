@@ -1,0 +1,5 @@
+#!/bin/bash
+
+sudo dhcpcd eth1 -x
+sudo iwconfig eth1 essid "PRAHA8.NET-R27-0"
+sudo dhcpcd eth1 -t 60

@@ -1,0 +1,14 @@
+#!/bin/bash
+
+i=eth1
+
+if [ $# -gt 0 ]
+then
+    i=$1
+fi
+
+sudo dhcpcd $i -x
+
+sudo wpa_supplicant -Dwext -i$i -c/home/uiii/.netconnect/wpa_skola.conf -B
+
+sudo dhcpcd -t 60 $i

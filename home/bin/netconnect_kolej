@@ -1,0 +1,19 @@
+#!/bin/bash
+
+if [ $# -gt 0 ]
+then
+	i=$1
+else
+	i="eth0"
+fi
+
+echo $i
+
+sudo ifconfig $i down
+sudo dhcpcd $i -x
+
+#su -c "echo 1 > /proc/sys/net/ipv6/conf/all/disable_ipv6"
+
+sudo wpa_supplicant -Dwired -i$i -c/home/uiii/.netconnect/wpa_kolej.conf -B
+
+sudo dhcpcd $i 

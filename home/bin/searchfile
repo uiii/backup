@@ -1,0 +1,8 @@
+#!/bin/bash
+
+if [ $# -ne 1 ]
+then
+	echo "usage: searchfile <string>"
+else
+	find . -type f -exec grep -IHEn "$1" {} \;
+fi

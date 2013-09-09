@@ -1,8 +1,25 @@
 #!/bin/bash
 
-if [ $# -ne 1 ]
+set -x
+
+function processFile {
+    #grep -IHEn $1 "$2" $3 | cut -c -256
+    #grep -IHEn $1 "$2" $3 | sed -e "s/\($2\)/\x1b[0;30m\x1b[43m\1\x1b[0m/g" | cut -c -256
+    grep -IHEn $1 "$2" $3 | sed -e "s/\($2\)/\x1b[0;33m\1\x1b[0m/g" | cut -c -500
+}
+
+export -f processFile
+
+if [ $# -lt 1 ]
 then
 	echo "usage: searchfile <string>"
 else
-	find . -type f -exec grep -IHEn "$1" {} \;
+    options=""
+    if [ $# -gt 1 ]
+    then
+        options=$1
+        shift 1;
+    fi
+    text="$*"
+	find . -type f -exec bash -c "processFile \"$options\" \"$text\" \$0" {} \;
 fi
